@@ -4,11 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>表单标签</title>
+
+  <style>
+
+    input {
+      color: red;
+    }
+
+  </style>
+
 </head>
 <body>
   <form action="https://www.baidu.com" method="GET">
-    <!-- 输入框 -->
-    <input type="text" name="sex"> <label for="sex">focus</label> <br>
+    <!-- 输入框
+      可通设置id，绑定label的for属性，来实现点击label标签，是input聚焦
+      或者用label标签把input标签包裹起来，也可使input聚焦
+    -->
+    <input type="text" name="sex" id="sex"> <label for="sex">focus</label> <br>
+    <label>
+      账号：<input type="text" name="" id="">
+    </label> <br>
     <!-- 复选框 -->
     <input type="checkbox"> <input type="checkbox"> <input type="checkbox"> <input type="checkbox"> <br>
     <!-- 选择日期 -->
@@ -29,6 +44,26 @@
     <input type="time" name="" id=""> <br>
     <!-- 普通按钮 -->
     <input type="button" value="普通按钮"> <br>
+    <!-- 
+      select标签: 可通过option的selected属性来选择默认的一个值
+      optgroup : 可用于分组
+    -->
+    请选择您喜欢的水果或蔬菜：
+    <select id="">
+      <optgroup label="水果">
+        <option value="Apple">Apple</option>
+        <option value="Banana">Banana</option>
+        <option value="Orange">Orange</option>
+        <option value="Pear">Pear</option>
+      </optgroup>
+      <optgroup label="蔬菜">
+        <option value="西红柿">西红柿</option>
+        <option value="白菜" selected>白菜</option>
+        <option value="豆角">豆角</option>
+      </optgroup>
+    </select> <br>
+    <!-- textarea 多行文本输入标签 -->
+    <textarea name="" id="" cols="30" rows="10" defaultValue="写点什么"></textarea> <br>
     <!-- 提交按钮，点击提交按钮，会触发form表单的action -->
     <input type="submit" value="提交">
   </form>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多媒体标签</title>
+</head>
+<body>
+  <!-- 
+    video标签: 视频播放标签
+    属性
+    src: 视频的播放地址
+    autoplay: 是否需要自动播放视频，（现已被禁止）
+    controls: 播放控制条
+    poster: 视频未播放前的占位图
+    loop: 循环播放视频，一般用于播放广告
+    preload: 预加载视频，但是和autoplay冲突，设置了autoplay,preload就会失效
+    muted: 静音
+    width/height: 视频播放界面的宽度和高度
+   -->
+
+  <video 
+    src="./movie.mp4" 
+    poster="./img8.jpg" 
+    autoplay="autoplay" 
+    controls="controls" 
+    loop="loop"
+    muted="muted"
+    width="600px"
+    height="600px">
+  </video>
+
+  <!-- 
+    第二种设置视频资源的的方法，是为了兼容各大浏览器厂商的视频格式而设置的
+    还可以使用html5media框架来兼容
+   -->
+  <video width="320" height="240" controls="controls">
+    <source src="movie.ogg" type="video/ogg">
+    <source src="movie.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+
+  <!-- 
+    audio标签的使用方法和video基本一致，知识width/height/poster等可视化的属性，无法使用
+   -->
+  <audio src="./timemusic.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio>
+
+</body>
+</html>

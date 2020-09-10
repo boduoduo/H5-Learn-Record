@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css定位</title>
+  <style>
+    .father {
+      width: 500px;
+      height: 500px;
+      background-color: red;
+    }
+    /* relative一般与absolute搭配使用，记住一个口诀：子绝父相， 
+       如果想让子元素相对于父元素作各个位置的偏移，则子元素用绝对定位，父元素用相对定位，子元素通过属性left，top，right，bottom可相对父元素作一定的偏移
+    */
+    .son {
+      position: relative;
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+    .grandson {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      width: 50px;
+      height: 50px;
+      background-color: skyblue;
+    }
+
+    /* fix定位 */
+    .fix {
+      position: fixed;
+      right: 50px;
+      top: 100px;
+      width: 300px;
+      height: 300px;
+      background-color: springgreen;
+    }
+    .fix-son {
+      width: 50px;
+      height: 50px;
+      background-color: orange;
+    }
+
+  </style>
+</head>
+<body>
+  
+<!--
+  css定位用到position属性
+  属性有4个值：
+  static
+  元素框正常生成。块级元素生成一个矩形框，作为文档流的一部分，行内元素则会创建一个或多个行框，置于其父元素中。即标准文档流，可省略不写
+  relative
+  元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。
+  absolute
+  元素框从文档流完全删除，并相对于其包含块定位。包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。
+  fixed
+  元素框的表现类似于将 position 设置为 absolute，不过其包含块是视窗本身。即相对与窗口进行定位，类似于相对于iOS的window层。
+ -->
+
+ <div class="father">
+   <div class="son">
+     <div class="grandson"></div>
+   </div>
+ </div>
+
+ <div class="fix">
+   <div class="fix-son"></div>
+ </div>
+
+</body>
+</html>

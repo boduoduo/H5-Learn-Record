@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css选择器</title>
+
+  <style>
+    /* 标签选择器 */
+    /* p {
+      color: #fff000;
+    }
+    h3 {
+      color: #353535;
+    }
+    span {
+      color: #999;
+    } */
+
+    /* id选择器,在标签的id前加个# */
+    #a {
+      color: pink;
+    }
+    #b {
+      color: skyblue;
+    }
+    #c {
+      color: springgreen;
+    }
+    /* 类选择器，在在标签的类名前加上一个. */
+    .aa {
+      color: green;
+    }
+    .bb {
+      color: hotpink;
+    }
+    .cc {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    /* 并集选择器 
+      即将多个选择器用逗号隔开，表示所有的选择器都适用下面的样式
+    */
+    a, .bb, .dd {
+      text-decoration: line-through;
+    }
+
+    /* 属性选择器 */
+    /* 表示赋予href指向相应地址的a标签样式 */
+    a[href="https://baidu.com"] {
+      color: green;
+    }
+    input[type="text"] {
+      color: darkblue;
+    }
+    p[class="aa"] {
+      font-style: italic;
+    }
+
+    /* 后代选择器,
+      表示设置div里所有是span标签的子元素(包括孙子元素) 的样式
+     */
+    div span {
+      font-size: 50px;
+      color: purple;
+    }
+
+    /* 子元素选择器， 只适用于儿子元素，孙子元素无法适用 */
+    h1 > strong { color:red; }
+
+    /* 兄弟选择器 
+      可选择紧接在另一元素后的元素，且二者有相同父元素，
+      请记住，用一个结合符只能选择两个相邻兄弟中的第二个元素
+    */
+    li + li {font-weight:bold;}
+
+    /* 交集选择器 交集选择器就是在两个标签相交的部分，也就是交集进行修改格式 */
+    p.p1 {
+      color: rebeccapurple;
+    }
+
+    /* 通配符选择器 就是* 适用于所有的标签*/
+    * {
+      margin: 0;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- <p>标签选择器1</p>
+  <h3>标签选择器2</h3>
+  <span>标签选择器3</span> -->
+  
+  <h4 id="b">id选择器2</h4>
+  <strong id="c">id选择器3</strong>
+  <a id="a">id选择器1</a>
+
+  <!-- 类选择器，类名可以有多个，对应style中的类名样式都有效 -->
+  <p class="aa">类选择器1</p>
+  <p class="bb cc">类选择器1</p>
+  <p class="dd">类选择器1</p>
+  
+  <!-- 属性选择器 -->
+  <a href="https://baidu.com">属性选择器</a> <br>
+  <input type="text">
+
+  <!-- 后代选择器 -->
+  <div>
+    <span class="son">后代选择器1</span>
+    <p>
+      <span class="">后代选择器2</span>
+    </p>
+  </div>
+
+  <!-- 子元素选择器 -->
+  <h1>
+    This is <strong>very</strong> <strong>very</strong> important.
+  </h1>
+  <h1>
+    This is <em>really <strong>very</strong></em> important.
+  </h1>
+
+  <!-- 兄弟选择器  -->
+  <div>
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ul>
+    <ol>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+    </ol>
+  </div>
+
+  <!-- 交集选择器 -->
+  <p>交集选择器1</p>
+  <p class="p1">交集选择器2</p>
+  <p class="p2">交集选择器3</p>
+
+  <!-- 序选择器 -->
+  <!-- 
+  1.同级别的第几个
+    :first-child 选中同级别中的第一个标签
+    :last-child 选中同级别中的最后一个标签
+    :nth-child(n) 选中同级别中第n个标签
+    :nth-last-child(n) 选中同级别中倒数第n个标签
+    注意点：不区分类别
+    :only-child 选中父元素中唯一的元素
+    :nth-child(odd) 选中同级别中所有奇数
+    :nth-child(even) 选中同级别中所有偶数
+    :nth-child(xn+y)：x和y自定义，n从0开始递增
+  2.同类型的第几个
+    :first-of-type 选中同级别中同类型的第一个标签
+    :last-of-type 选中同级别中同类型的最后一个标签
+    :nth-of-type(n) 选中同级别中同类型的第n个标签
+    :nth-last-of-type(n) 选中同级别中同类型倒数第n个标签
+    :only-of-type 选中父元素某一类型的标签
+    :nth-of-type(odd)选中同级别中同类型所有奇数
+    :nth-of-type(even)选中同级别中同类型所有偶数
+   -->
+
+   <!-- 通配符选择器 -->
+
+</body>
+</html>
