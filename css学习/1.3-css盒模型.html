@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>h5盒模型</title>
+  <style>
+    .box {
+      width: 300px;
+      height: 300px;
+      margin: 50px;
+      padding: 20px;
+      background-color: orange;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border-width: 10px;
+      border-color: black;
+      border-style: solid;
+      /* border 简写 */
+      /* border: 10px solid black; */
+    }
+    .inner {
+      width: 100%;
+      height: 100%;
+      background-color: orangered;
+    }
+
+    .half-circle {
+      width: 200px;
+      height: 100px;
+      margin: 30px auto;
+      border: 1px solid black;
+      border-radius: 100px 100px 0 0;
+      background-color: blueviolet;
+    }
+    .ellipse {
+      /* 绘制椭圆设置水平方向为宽度的一半，设置垂直方向为高度的一半 */
+      width: 400px;
+      height: 200px;
+      border: 1px solid black;
+      margin: 30px auto;
+      border-top-left-radius: 200px 100px;
+      border-top-right-radius: 200px 100px;
+      border-bottom-left-radius: 200px 100px;
+      border-bottom-right-radius: 200px 100px;
+      background-color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 看懂这张图就可以了 -->
+  <img src="../assets/ct_boxmodel.gif" alt="">
+
+  <div class="box">
+    <div class="inner"></div>
+  </div>
+
+  <!-- 半圆 -->
+  <div class="half-circle"></div>
+
+  <!-- 椭圆 -->
+  <div class="ellipse"></div>
+
+</body>
+</html>

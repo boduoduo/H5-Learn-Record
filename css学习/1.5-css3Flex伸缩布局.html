@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex伸缩布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      margin: 100px auto;
+      list-style: none;
+      width: 600px;
+      height: 600px;
+      border: 1px solid #000;
+      display: flex;
+      flex-direction: row;
+      /* flex-wrap: wrap;
+      align-content: flex-start; */
+    }
+    ul > li {
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+      font-size: 30px;
+      background-color: red;
+    }
+    ul > li:nth-child(1) {
+      /* order: 999; */
+      /* flex-grow: 1; */
+      flex-shrink: 1;
+    }
+    ul > li:nth-child(2) {
+      background-color: green;
+      order: 0;
+      /* align-self: center; */
+      /* flex-grow: 4; */
+    }
+    ul > li:nth-child(3) {
+      order: 0;
+      background-color: blue;
+      /* align-self: flex-end; */
+      /* flex-grow: 8; */
+    }
+
+  </style>
+</head>
+<body>
+  
+<!-- flex布局：伸缩布局
+  伸缩容器：即设置flex布局的父容器
+  主轴：默认水平方向的布局为主轴方向
+  纵轴：默认垂直方向的布局为纵轴方向,
+  主轴方向和侧轴方向永远都是垂直的。
+
+  主轴布局：
+  默认主轴布局为为水平方向，从左到右布局
+  flex-direction: 修改主轴起点位置
+  flex-direction： row                    ===>  从左到右布局
+  flex-direction： row-reverse            ===>  从右到左布局
+  flex-direction： column                 ===>  从上到下布局
+  flex-direction： column-reverse         ===>  从下到上布局
+
+  主轴对齐：
+  justify-content: flex-start;            ====>主轴起点对齐
+  justify-content: center;                ====>居中对齐
+  justify-content: flex-end;              ====>主轴终点对齐
+  justify-content: space-between;         ====>第一个和第二个靠边，中间的元素等分间隙,即两端对齐
+  justify-content: space-around;          ====>每个元素左右都是相等间隙，即环绕对齐
+  
+  侧轴对齐
+  align-items: flex-start;            ====> 侧轴起点对齐
+  align-items: center;                ====> 侧轴居中对齐
+  align-items: flex-end;              ====> 侧轴起点对齐
+  侧轴没有space-between和space-around对齐方式
+  align-items: baseline;              ====> 基线对齐
+  align-items: stretch;               ====> 拉升对齐，会把伸缩项的高度拉伸和父容器一样高，注意：伸缩项不能设置高度，
+
+  伸缩项的侧轴对齐方式，注意align-self需写到伸缩项的布局里面
+  align-self: flex-start;
+  align-self: center;
+  align-self: flex-end;
+
+  换行
+  flex-wrap: no-wrap;           ===> 默认值，不换行，一行展示不下时，伸缩项会等比压缩
+  flex-wrap: wrap;              ===> 展示不下，就换行
+  flex-wrap: wrap-reverse;      ===> 展示不下，就换行,以行为单位反转
+
+  换行之后的对齐方式
+  align-content: flex-start;
+  align-content: center;
+  align-content: flex-end;
+  align-content: space-between;
+  align-content: space-around;
+  align-content: stretch;         以行为单位，拉伸，每行高度一直
+
+  伸缩项排序
+  默认情况下，每个伸缩项都有一个order属性，用户决定排序的先后顺序
+  默认情况下，每个伸缩项的order值都是0，
+  order排序的规则：从小到大的排序，越小的显示在越前面，越大的显示在越后面
+
+  伸缩项扩充
+  在伸缩项中，有一个flex-grow属性，当所有伸缩项的宽度总和小于伸缩项父容器的宽度时，设置flex-grow为某个值,会扩充所有的伸缩项，
+  以充满宽度，默认值为1，等比扩充，0:表示不扩充
+  扩充算法
+  1.计算剩余空间
+    600 - 100 * 3 = 300
+  2.计算扩充分数
+    300 / （1+4+8）= 23.08
+  3.每个元素最后的宽度
+    第一个：100 + （1 * 23.08）= 
+    第二个：100 + （4 * 23.08）=
+    第三个：100 + （8 * 23.08）=
+
+  伸缩项缩小
+  当所有伸缩项的宽度总和打于伸缩项父容器的宽度时，默认伸缩项会等比缩小，这时可以通过设置伸缩项flex-shrink的值，
+  来控制缩放比，默认值为1，等比缩放；设置为0，不缩放，会超出父容器，值越大，缩放得越厉害
+
+  伸缩布局中设置伸缩项的宽度，通过属性flex-basis设置
+  1、flex-basis属性只在伸缩布局中有效
+  2、如果用flex-basis设置了宽度，在设置width，会无效，即flex-basis的优先级高于width
+  3、当flex-basis和width其中有一个设置了auto，另外一个设置具体值，则具体值有效，与先后顺序无关
+
+  伸缩项属性连写
+  flex: 扩充 缩小 宽度
+  默认值
+  flex: 0 1 auto
+-->
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+  
+</body>
+</html>
