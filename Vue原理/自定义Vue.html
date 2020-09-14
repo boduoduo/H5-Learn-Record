@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义Vue</title>
+
+  <script src="../js/Nue.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+  <input type="text" v-model="name">
+  <p>{{ name }}</p>
+</div>
+
+<script>
+
+let nue = new Nue({
+  el: '#app',
+  data() {
+    return {
+      name: 'Maxb'
+    }
+  },
+})
+
+console.log(nue.$el)
+console.log(nue.$data)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D模块</title>
+
+  <style>
+    .father {
+      margin: 100px auto;
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      border: 1px solid #000;
+      perspective: 500px;
+      /* 二维模块 */
+      /* transform-style: flat; */
+      /* 三维模块 */
+      transform-style: preserve-3d;
+      transform: rotateY(80deg);
+    }
+
+    .son {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      border: 1px solid #000;
+      margin: 0 auto;
+      margin-top: 50px;
+      transform: rotateY(45deg);
+    }
+
+    ul {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      box-sizing: border-box;
+      position: relative;
+      transform-style: preserve-3d;
+      /* perspective: 500px; */
+      transform: rotateY(0deg) rotateX(0deg);
+    }
+
+    ul li {
+      list-style: none;
+      font-size: 50px;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    ul li:nth-child(1) {
+      background-color: red;
+      /* transform: translateX(-100px) rotateY(90deg); */
+      transform: rotateX(90deg) translateZ(100px);
+    }
+    ul li:nth-child(2) {
+      background-color: green;
+      /* transform: translateX(100px) rotateY(90deg); */
+      transform: rotateX(180deg) translateZ(100px);
+    }
+    ul li:nth-child(3) {
+      background-color: blue;
+      /* transform: translateY(-100px) rotateX(90deg); */
+      transform: rotateX(270deg) translateZ(100px);
+    }
+    ul li:nth-child(4) {
+      background-color: yellow;
+      /* transform: translateY(100px) rotateX(90deg); */
+      transform: rotateX(360deg) translateZ(100px);
+    }
+    ul li:nth-child(5) {
+      background-color: purple;
+      /* transform: translateZ(-100px); */
+      transform: translateX(-100px) rotateY(90deg);
+    }
+    ul li:nth-child(6) {
+      background-color: pink;
+      /* transform: translateZ(100px); */
+      transform: translateX(100px) rotateY(90deg);
+    }
+
+  </style>
+
+</head>
+<body>
+  
+  <!-- 要想让某个元素以3D样式展示出来，只需要在父元素中加入transform-style: preserve-3d; 并加入perspective视角属性 -->
+
+  <!-- <div class="father">
+    <div class="son"></div>
+  </div> -->
+
+  <!-- 立方体 -->
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+
+
+</body>
+</html>

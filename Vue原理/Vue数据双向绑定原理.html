@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双向绑定原理</title>
+
+  <script src="../js/vue.js"></script>
+
+</head>
+<body>
+
+  <div id="app">
+    <input type="text" v-model="name">
+    <p>{{ name }}</p>
+  </div>
+  
+<script>
+let vue = new Vue({
+  el: '#app',
+  data() {
+    return {
+      name: 'maxb'
+    }
+  },
+})
+
+/*
+  1、Vue是如何时时监听数据变化的：
+  通过原生的原生的Object.defineProperty方法
+  2、defineProperty方法特点
+   可以直接在一个对象上定义一个新属性，或者修改该对象上现有的属性，并返回这个对象
+  3、defineProperty用法
+  obj: 需要操作的对象
+  prop： 需要操作的属性
+  descriptor： 属性描述符
+  Object.defineProperty(obj, prop, descriptor)
+*/
+
+let obj = {}
+let oldValue = 'Qfl'
+Object.defineProperty(obj, 'name', {
+  // 新增的属性值, 如果是修改原有的属性值，是可以修改的
+  // value: 'Maxb',
+  // 默认情况下，新增的属性是不能修改其值的，writable默认为false，修改true，才能修改属性值
+  // writable: true,
+  // 默认情况下，新增的属性是删除的，configurable默认为false，修改true，才能删除改属性
+  configurable: true,
+  // 默认情况下，新增的属性是不能被迭代的，enumerable默认为false，修改true，才能迭代该属性
+  enumerable: true,
+  get() {
+    return oldValue
+  },
+  set(newValue) {
+    if (newValue !== oldValue) {
+      oldValue = newValue
+    }
+  }
+})
+
+// 默认不能删除新增的属性
+// delete obj.name
+
+// 默认情况下，新增的属性是不能被迭代的
+// for (const key in obj) {
+//   console.log(key, obj[key])
+// }
+
+/*
+  快速监听对象中所有属性的变化
+*/
+
+let obj2 = {
+  name: 'Maxb',
+  age: 26
+}
+
+class Observer {
+  constructor(data) {
+    this.observer(data)
+  }
+  observer(obj) {
+    if (obj && typeof obj === 'object') {
+      // 遍历取出对象中所有的属性，并为他们增加get/set方法
+      for (const key in obj) {
+        this.defineReactive(obj, key, obj[key])
+      }  
+    }
+  }
+  defineReactive(obj, attr, value) {
+    // 如果value的值也是一个对象，那么也需要给这个属性添加get/set方法
+    this.observer(value)
+    Object.defineProperty(obj, attr, {
+      get() {
+        return value
+      },
+      set: (newValue) => {
+        if (newValue !== value) {
+          // 如果新赋值的也是一个对象，需要给这个新赋值对象的所有属性添加get/set方法
+          this.observer(newValue)
+          value = newValue
+          // 监听到了数据的变化
+          console.log('监听到了数据的变化，去更新UI')
+        }
+      }
+    })
+  }
+}
+
+new Observer(obj2)
+obj2.name = 'qfgfsa'
+obj2.name = { a: 1212 }
+obj2.name.a = 54455
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2d动画模块</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      /* transition过渡动画 */
+      /* transition: transform 0.5s; */
+      /* transition: all 0.5s; */
+
+      /* animation动画三要素
+        1.动画名字name
+        2.动画的具体实现 keyframes
+        3.动画时长duration
+       */
+      /* 1.动画名字 */
+      animation-name: maxb;
+      /* 3.动画时长 */
+      animation-duration: 3s;
+      /* 动画延时 */
+      animation-delay: 1s;
+      /* 动画速度曲线 */
+      animation-timing-function: linear;
+      /* animation-timing-function:ease */
+      /* 动画执行次数 取值，正整数 1，2，3，infinite表示无限次数 */
+      animation-iteration-count: 3;
+      /* 动画往返动画，取值normal（没有往返动画）， alternate（往返动画） */
+      animation-direction: alternate;
+      /* 动画播放状态running，paused */
+      animation-play-state: running;
+      /* 指定动画的等待状态和结束状态
+        none： 不做任何改变
+        forwards: 让元素等待状态保持为动画的最后一帧
+        backwards: 让元素的等待状态显示为 动画的第一帧
+        both： forwards和backwards的结合
+       */
+      animation-fill-mode: backwards;
+
+      /* 动画属性连写
+        animation: 动画名称 动画时长 动画运行速度 延迟时间 执行次数 往返动画
+       */
+
+    }
+    /* 2.动画的具体实现 */
+    @keyframes maxb {
+      /* from {
+        margin-left: 0;
+      }
+      to {
+        margin-left: 500px;
+      } */
+      0% {
+        left: 0;
+        top: 0;
+      }
+      25% {
+        left: 300px;
+        top: 0;
+      }
+      50% {
+        left: 300px;
+        top: 300px;
+      }
+      75% {
+        left: 0;
+        top: 300px;
+      }
+      100% {
+        left: 0;
+        top: 0;
+      }
+    }
+
+    .box1:hover {
+      /* transform: scale(2); */
+      animation-play-state: paused;
+    }
+
+  </style>
+
+</head>
+<body>
+  
+<div class="box1"></div>
+
+</body>
+</html>

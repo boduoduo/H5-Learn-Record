@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过渡模块</title>
+
+  <style>
+    /* a标签的伪类选择器必须有严格的顺序要求，link，visited，hover，active */
+    /* 如果默认状态和被访问过的状态一样，则可以简写成如下 */
+    /* a {
+      color: orange;
+    } */
+    a:link {
+      color: orange;
+    } 
+    a:visited {
+      color: greenyellow;
+    }
+    a:hover {
+      color: purple;
+    }
+    a:active {
+      color: pink;
+    }
+
+    /* 过渡动画 */
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      /* 过渡动画属性 */
+      transition-property: width, background-color;
+      /* 过渡动画时长 */
+      transition-duration: 2s, 2s;
+      /* 过渡动画延迟时间 */
+      transition-delay: 2s;
+      /* 过渡动画速度运动曲线 */
+      transition-timing-function: linear;
+      /* 可简写如下 */
+      /* transition: property duration timing-function delay; */
+    }
+    .box:hover {
+      width: 300px;
+      background-color: blueviolet;
+    }
+
+    .box1 {
+      height: 100px;
+      background-color: red;
+      margin: 100px;
+      text-align: center;
+      line-height: 100px;
+    }
+    div span {
+      font-size: 90px;
+      transition: margin 1s;
+    }
+    div:hover span {
+      margin: 0 30px;
+    }
+
+  </style>
+
+</head>
+<body>
+  
+  <!-- a标签存在的状态
+    1.默认状态，链接未被访问过
+    2.被访问过的状态
+    3.鼠标长按的状态
+
+    格式：
+    :link 未被访问过
+    :visited 未被访问过的状态
+    :active 鼠标长按下的状态
+    :hover 鼠标悬停在a标签上的状态
+  -->
+
+  <a href="https://www.taobao.com/">Taobao</a>
+  <a href="https://www.jd.com/">JD</a>
+
+
+  <!-- 过渡动画三要素
+    1.必须要有属性发生变化
+    2.必须告诉系统哪个属性需要执行过渡效果
+    3.过渡动画的时长
+    注意点：
+    当多个属性需要执行过渡动画效果时，用','连接
+    transition-property: width, background-color;;
+    transition-duration: 2s, 2s;
+    /* 可简写如下 */
+    transition: property duration timing-function delay;
+  -->
+  <div class="box"></div>
+
+  <div class="box1">
+    <span>波</span>
+    <span>波</span>
+    <span>学</span>
+    <span>习</span>
+    <span>H</span>
+    <span>5</span>
+  </div>
+
+</body>
+</html>
