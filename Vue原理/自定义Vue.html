@@ -12,22 +12,53 @@
 
 <div id="app">
   <input type="text" v-model="name">
+  <input type="text" v-model="time.h">
+  <input type="text" v-model="time.m">
+  <input type="text" v-model="time.s">
+  <div v-html="html">123</div>
+  <div v-text="text">v-text</div>
   <p>{{ name }}</p>
+  <p>{{ age }}</p>
+  <p v-on:click="myFn">我叫{{ name }}, 年龄：{{ age }}</p>
+  <p>{{ getMyName }}</p>
+  <ul>
+    <li>AAAA</li>
+    <li>MMMM</li>
+    <li>QQQQ</li>
+  </ul>
 </div>
 
 <script>
 
 let nue = new Nue({
   el: '#app',
-  data() {
-    return {
-      name: 'Maxb'
+  data: {
+    name: 'Maxb',
+    age: 18, 
+    time: {
+      h: 11,
+      m: 12,
+      s: 13
+    },
+    html: '<div>html模版</div>',
+    text: '<div>text模版</div>'
+  },
+  methods: {
+    myFn() {
+      alert('点击事件')
+      console.log(this)
+      console.log(this.html)
+    }
+  },
+  computed: {
+    getMyName() {
+      return this.name + '666'
     }
   },
 })
 
-console.log(nue.$el)
-console.log(nue.$data)
+// nue.$data.age = 20
+// nue.$data.time.h = 24
 
 </script>
 
